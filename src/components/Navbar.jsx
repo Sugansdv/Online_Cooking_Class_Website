@@ -12,19 +12,18 @@ export default function Navbar() {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
- useEffect(() => {
-  const loadUser = () => {
-    const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
-    setUser(loggedIn);
-  };
+  useEffect(() => {
+    const loadUser = () => {
+      const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+      setUser(loggedIn);
+    };
 
-  loadUser();
+    loadUser();
 
-  window.addEventListener("userLogin", loadUser);
+    window.addEventListener("userLogin", loadUser);
 
-  return () => window.removeEventListener("userLogin", loadUser);
-}, []);
-
+    return () => window.removeEventListener("userLogin", loadUser);
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("loggedInUser");
@@ -48,8 +47,12 @@ export default function Navbar() {
       </div>
 
       <ul className="hidden lg:flex items-center space-x-16 font-semibold text-[#5B4E44] text-base lg:text-2xl relative">
-        <li className="hover:opacity-70"><Link to="/">HOME</Link></li>
-        <li className="hover:opacity-70"><Link to="/about">ABOUT</Link></li>
+        <li className="hover:opacity-70">
+          <Link to="/">HOME</Link>
+        </li>
+        <li className="hover:opacity-70">
+          <Link to="/about">ABOUT</Link>
+        </li>
 
         {/* Programs Dropdown */}
         <li
@@ -64,12 +67,18 @@ export default function Navbar() {
             <div className="absolute top-full left-0 mt-1 bg-[#FFF5E1] shadow-lg text-black w-64 z-50 rounded-md border border-gray-200">
               <ul className="p-4 space-y-2 text-base lg:text-xl">
                 <li className="hover:font-semibold">
-                  <Link to="/bakery" className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md">
+                  <Link
+                    to="/bakery"
+                    className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
+                  >
                     BAKERY BUSINESS ACCELERATOR
                   </Link>
                 </li>
                 <li className="hover:font-semibold">
-                  <Link to="/cloud-kitchen" className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md">
+                  <Link
+                    to="/cloud-kitchen"
+                    className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
+                  >
                     CLOUD KITCHEN ACCELERATOR
                   </Link>
                 </li>
@@ -101,7 +110,10 @@ export default function Navbar() {
                   "GARNISHING & PLATING",
                 ].map((course, i) => (
                   <li key={i} className="hover:font-semibold">
-                    <Link to="/course-des" className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md">
+                    <Link
+                      to="/course-des"
+                      className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
+                    >
                       {course}
                     </Link>
                   </li>
@@ -111,35 +123,34 @@ export default function Navbar() {
           )}
         </li>
 
-        <li className="hover:opacity-70"><Link to="/contact">CONTACT</Link></li>
+        <li className="hover:opacity-70">
+          <Link to="/contact">CONTACT</Link>
+        </li>
       </ul>
 
       {/* Right Side - Login & Hamburger */}
       <div className="flex items-center space-x-3">
         {user ? (
           <div className="relative max-w-[200px]">
-<button
-  onClick={() => setDropdownOpen(!dropdownOpen)}
-  className="bg-[#BF4444] text-white text-sm lg:text-base font-bold px-4 py-1.5 lg:px-10 lg:py-2 rounded-full hover:bg-[#a93b3b] truncate"
-  title={`Hello! ${user?.name || "User"}`}
->
-  Hello! {user?.name || "User"}
-</button>
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="bg-[#BF4444] text-white text-sm lg:text-base font-bold px-4 py-1.5 lg:px-10 lg:py-2 rounded-full hover:bg-[#a93b3b] truncate"
+              title={`Hello! ${user?.name || "User"}`}
+            >
+              Hello! {user?.name || "User"}
+            </button>
 
-
-
-  {dropdownOpen && (
-    <div className="absolute right-0 mt-2 bg-white border rounded shadow-lg z-50 w-32">
-      <button
-        onClick={logout}
-        className="block w-full text-left px-4 py-2 text-sm text-red-700 hover:bg-red-100"
-      >
-        Logout
-      </button>
-    </div>
-  )}
-</div>
-
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 bg-white border rounded shadow-lg z-50 w-32">
+                <button
+                  onClick={logout}
+                  className="block w-full text-left px-4 py-2 text-sm text-red-700 hover:bg-red-100"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         ) : (
           <>
             <div className="block lg:hidden">
@@ -173,26 +184,46 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="w-full lg:hidden mt-4 text-[#5B4E44] font-semibold text-base space-y-3 px-4">
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>HOME</Link><br />
-          <Link to="/about" onClick={() => setMobileMenuOpen(false)}>ABOUT</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+            HOME
+          </Link>
+          <br />
+          <Link to="/about" onClick={() => setMobileMenuOpen(false)}>
+            ABOUT
+          </Link>
 
           {/* Programs Toggle */}
           <div>
-            <button onClick={() => setShowPrograms(!showPrograms)} className="w-full flex justify-between">
-              <span>PROGRAMS</span><span>▼</span>
+            <button
+              onClick={() => setShowPrograms(!showPrograms)}
+              className="w-full flex justify-between"
+            >
+              <span>PROGRAMS</span>
+              <span>▼</span>
             </button>
             {showPrograms && (
               <div className="pl-4 mt-1 text-sm space-y-1">
-                <Link to="/bakery" onClick={() => setMobileMenuOpen(false)}>BAKERY BUSINESS ACCELERATOR</Link>
-                <Link to="/cloud-kitchen" onClick={() => setMobileMenuOpen(false)}>CLOUD KITCHEN ACCELERATOR</Link>
+                <Link to="/bakery" onClick={() => setMobileMenuOpen(false)}>
+                  BAKERY BUSINESS ACCELERATOR
+                </Link> <br />
+                <Link
+                  to="/cloud-kitchen"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  CLOUD KITCHEN ACCELERATOR
+                </Link>
               </div>
             )}
           </div>
 
           {/* Courses Toggle */}
           <div>
-            <button onClick={() => setShowCourses(!showCourses)} className="w-full flex justify-between">
-              <span>COURSES</span><span>▼</span>
+            <button
+              onClick={() => setShowCourses(!showCourses)}
+              className="w-full flex justify-between"
+            >
+              <span>COURSES</span>
+              <span>▼</span>
             </button>
             {showCourses && (
               <div className="pl-4 mt-1 text-sm space-y-1">
@@ -206,13 +237,22 @@ export default function Navbar() {
                   "VEGETARIAN’S DELIGHT",
                   "GARNISHING & PLATING",
                 ].map((course, i) => (
-                  <Link key={i} to="/course-des" onClick={() => setMobileMenuOpen(false)}>{course}</Link>
+                  <Link
+                    key={i}
+                    to="/course-des"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block hover:underline"
+                  >
+                    {course}
+                  </Link>
                 ))}
               </div>
             )}
           </div>
 
-          <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
+          <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+            CONTACT
+          </Link>
         </div>
       )}
     </nav>
