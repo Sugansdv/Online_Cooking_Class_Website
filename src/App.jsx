@@ -17,6 +17,7 @@ import CloudKitchen from "./pages/CloudKitchen";
 import ForgetPassword from "./components/ForgetPassword";
 import EnrollSuccess from "./components/EnrollSuccess";
 import './App.css';
+import ScrollToTop from "d:/Ecommerce_Wedding_Cards/src/components/ScrollToTop";
 
 function LayoutRoutes() {
   const location = useLocation();
@@ -57,6 +58,7 @@ function LayoutRoutes() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <LayoutRoutes />
     </Router>
   );
