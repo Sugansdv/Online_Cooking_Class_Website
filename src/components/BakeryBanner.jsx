@@ -1,6 +1,5 @@
 import React from 'react';
 import banner1Image from '../assets/images/banner1.png';
-import enrollNow from '../assets/images/enrollNow.png';
 import text1 from '../assets/images/firsttext.png';
 import cheffimg from '../assets/images/Group 48.png';
 import { useNavigate } from "react-router-dom";
