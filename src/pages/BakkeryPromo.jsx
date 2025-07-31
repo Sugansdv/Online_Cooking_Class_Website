@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import bannerImage from '../assets/images/bakkery2.png';
-import BakeryBanner from '../components/bakerybanner';
+import BakeryBanner from '../components/BakeryBanner';
 import CourseBanner from '../components/CourseBanner';
 import {
   PencilSquareIcon,
