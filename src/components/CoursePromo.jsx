@@ -37,13 +37,13 @@ export default function CoursePromo() {
 
           {/* Left Bar */}
           <div
-            className="hidden md:block absolute top-0 left-0 h-full w-[60px] bg-lime-500 z-20"
+            className="hidden md:block absolute top-0 left-0 h-full w-[60px] bg-[#A7C957]  z-20"
             style={{ clipPath: "polygon(80% 0, 0 175%, 0 0)" }}
           />
 
           {/* Right Bar */}
           <div
-            className="hidden md:block absolute top-0 right-0 h-full w-[60px] bg-lime-500 z-20"
+              className="hidden md:block absolute top-0 right-0 h-full w-[60px] bg-[#A7C957] z-20"
             style={{ clipPath: "polygon(60% 0, 30% 100%, 10000% 110%)" }}
           />
 
