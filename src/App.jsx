@@ -10,7 +10,7 @@ import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import LoginNavbar from "./components/LoginNavbar";
 import BakeryPromo from "./pages/BakkeryPromo";
-import CourseDescription from "./pages/courseDescription";
+import CourseDescription from "./pages/CourseDescription";
 import EnrollmentForm from "./components/EnrollmentForm";
 import EnrollNavbar from "./components/EnrollNavbar";
 import CloudKitchen from "./pages/CloudKitchen";
