@@ -26,7 +26,7 @@ function CloudKitchenBanner() {
                     alt="Banner"
                     className="w-full h-full object-cover rounded-xl"
                   />
-                   <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                   <div className="absolute inset-0 bg-opacity-0"></div>
                 </div>
                 
 
@@ -65,7 +65,7 @@ function CloudKitchenBanner() {
 
                 <button
       onClick={() => navigate("/enroll")}
-      className="absolute text-sm md:text-base lg:text-2xl left-20 md:left-56 lg:left-56 bottom-[220px] md:bottom-[160px] lg:bottom-32 z-20 bg-[#800000] hover:bg-[#660000] text-white font-semibold py-2 px-6 md:px-8 lg:px-10 rounded-full transition duration-300"
+      className="absolute text-sm md:text-base lg:text-2xl left-20 md:left-56 lg:left-56 bottom-[220px] md:bottom-[160px] lg:bottom-32 z-20 bg-[#C34F4F] hover:bg-[#D57A66] text-white font-semibold py-2 px-6 md:px-8 lg:px-10 rounded-full transition duration-300"
     >
       ENROLL NOW
     </button>

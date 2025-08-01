@@ -60,7 +60,7 @@ export default function CoursePromo() {
             <div className="w-full">
               <button
                 onClick={navigate.bind(null, "/courses")}
-                className="mx-auto block bg-red-600 hover:bg-orange-500 text-white font-semibold py-2 px-8 rounded-3xl transition duration-300 ease-in-out transform hover:scale-105 uppercase tracking-wide text-sm md:text-lg"
+                className="mx-auto block bg-[#C34F4F] hover:bg-[#D57A66] text-white font-semibold py-2 px-8 rounded-3xl transition duration-300 ease-in-out transform hover:scale-105 uppercase tracking-wide text-sm md:text-lg"
               >
                 VIEW COURSES
               </button>

@@ -7,7 +7,7 @@ const WhatWeOffer = () => {
         What We Offers
       </h2>
 
-      <ul className="space-y-6 max-w-5xl mx-auto text-base md:text-lg leading-relaxed ">
+      <ul className="space-y-6 max-w-6xl mx-auto text-base md:text-lg leading-relaxed ">
         <li className="flex items-start gap-3">
           <span className="text-[#c94f4f] text-2xl leading-none">•</span>
           <span className="text-xl md:text-2xl">

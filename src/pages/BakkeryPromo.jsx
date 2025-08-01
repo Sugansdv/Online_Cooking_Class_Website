@@ -14,7 +14,7 @@ function BakeryPromo() {
                             BAKERY BUSINESS ACCELERATOR PROGRAM.
                         </p>
             
-                        <p className="mt-2 mb-8 max-w-4xl text-2xl font-semibold text-rose-800">
+                        <p className="mt-2 mb-8 max-w-4xl text-2xl font-semibold">
                             Program Limited to 50 people Only!
                         </p>
             <BakeryBanner />

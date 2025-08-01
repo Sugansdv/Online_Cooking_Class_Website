@@ -51,7 +51,7 @@ export default function RecipeCard() {
 
         <div className="mb-6">
           <h3 className="text-xl font-bold mb-2 text-sm md:text-xl lg:text-3xl">Ingredients:</h3>
-          <ul className="list-disc list-inside space-y-1 text-sm md:text-base lg:text-2xl  font-semibold ">
+          <ul className="list-disc list-inside space-y-1 text-sm md:text-basez lg:text-2xl  font-semibold ">
             <li>200g Hakka Noodles</li>
             <li>2 Tbsp Oil</li>
             <li>1 Tbsp Soy Sauce</li>

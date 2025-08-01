@@ -70,11 +70,11 @@ const CourseCard = () => {
     <div className="bg-[#FFF9F3] min-h-screen py-12 px-4 md:px-10 lg:px-20">
       <h1 className="text-center text-3xl md:text-4xl font-extrabold mb-10">ALL COURSES</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-10 place-items-center max-w-7xl mx-auto">
         {courseData.map((course, index) => (
           <div
             key={index}
-            className={`rounded-[20px] w-full max-w-[340px] h-[560px] p-6 text-left shadow-xl flex flex-col bg-cover bg-center transform transition duration-700 ease-in-out
+            className={`rounded-[20px] w-full max-w-[360px] h-[560px] p-6 text-left shadow-xl flex flex-col bg-cover bg-center transform transition duration-700 ease-in-out
               ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
               hover:scale-105 hover:shadow-2xl`}
             style={{
@@ -82,7 +82,7 @@ const CourseCard = () => {
             }}
           >
             <div className="flex flex-col h-full">
-              <h3 className="text-white font-bold text-xl uppercase mb-4 min-h-[64px] leading-snug">
+              <h3 className="text-white font-bold text-xl uppercase mb-4 min-h-[64px] leading-snug text-center">
                 {course.title}
               </h3>
 
@@ -97,7 +97,7 @@ const CourseCard = () => {
 
               <button 
                 onClick={handleClick}
-                className="bg-[#C24B4B] text-white font-semibold py-1 px-5 rounded-full hover:opacity-90 w-fit mx-auto">
+                className="bg-[#C34F4F] hover:bg-[#D57A66] text-white font-semibold py-1 px-5 rounded-full w-fit mx-auto">
                 LEARN MORE
               </button>
             </div>

@@ -81,7 +81,7 @@ const Signup = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-60 bg-[#BF4444] text-lg md:text-xl lg:text-2xl text-white py-2 rounded-full font-bold"
+              className="w-60 bg-[#C34F4F] hover:bg-[#D57A66] text-lg md:text-xl lg:text-2xl text-white py-2 rounded-full font-bold"
             >
               SUBMIT
             </button>

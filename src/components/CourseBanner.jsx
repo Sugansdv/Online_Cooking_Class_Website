@@ -54,7 +54,7 @@ const CourseBanner = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/course-des");
+    navigate("/courses");
   };
 
   const clearMessages = () => {
@@ -72,7 +72,7 @@ const CourseBanner = () => {
       <div className="mt-8 w-full max-w-6xl flex items-center justify-center relative">
         <button
           onClick={handleClick}
-          className="mx-auto bg-[#B94747] text-white font-semibold text-lg px-6 py-3 rounded-full hover:bg-[#a53d3d] transition"
+          className="mx-auto bg-[#C34F4F] hover:bg-[#D57A66] text-white font-semibold text-lg px-6 py-3 rounded-full transition"
         >
           VIEW COURSES
         </button>

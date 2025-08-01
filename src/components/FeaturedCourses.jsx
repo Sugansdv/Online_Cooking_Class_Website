@@ -51,7 +51,7 @@ export default function FeaturedCourses() {
       <h2 className="text-3xl md:text-4xl font-extrabold mb-10">
         FEATURED COURSES
       </h2>
-      <div className="flex flex-wrap justify-center gap-10 max-w-7xl mx-auto">
+      <div className="flex flex-wrap justify-center gap-20 max-w-7xl mx-auto">
         {courses.map((course, idx) => (
           <div
             key={idx}
@@ -75,7 +75,7 @@ export default function FeaturedCourses() {
 
             <button
               onClick={handleClick}
-              className="mt-1 bg-[#C8443A] text-white text-[15px] font-bold py-2 px-6 rounded-full hover:bg-red-700 transition mx-auto"
+              className="mt-1 bg-[#C34F4F] hover:bg-[#D57A66] text-white text-[15px] font-bold py-2 px-6 rounded-full transition mx-auto"
             >
               LEARN MORE
             </button>

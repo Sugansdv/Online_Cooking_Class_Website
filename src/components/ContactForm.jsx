@@ -147,7 +147,7 @@ const ContactForm = () => {
             <div className="flex justify-center space-x-4 pt-4">
               <button
                 type="submit"
-                className="bg-[#C3413B] text-white font-bold px-5 py-1.5 rounded-full text-sm"
+                className="bg-[#C34F4F] hover:bg-[#D57A66] text-white font-bold px-5 py-1.5 rounded-full text-sm"
               >
                 SUBMIT
               </button>

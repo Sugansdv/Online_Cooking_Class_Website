@@ -46,7 +46,7 @@ export default function OfferBanner() {
 
         <button 
           onClick={handleClick}
-          className="absolute left-1/2 transform -translate-x-1/2 bottom-6 bg-[#D66567] hover:bg-[#bb4a4c] text-white font-semibold py-2 px-5 rounded-full transition duration-300"
+          className="absolute left-1/2 transform -translate-x-1/2 bottom-6 bg-[#C34F4F] hover:bg-[#D57A66] text-white font-semibold py-2 px-5 rounded-full transition duration-300"
         >
           LEARN MORE
         </button>

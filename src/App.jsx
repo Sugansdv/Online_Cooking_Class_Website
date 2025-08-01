@@ -17,7 +17,16 @@ import CloudKitchen from "./pages/CloudKitchen";
 import ForgetPassword from "./components/ForgetPassword";
 import EnrollSuccess from "./components/EnrollSuccess";
 import './App.css';
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "d:/Ecommerce_Wedding_Cards/src/components/ScrollToTop";
+import { DropdownProvider } from "./components/DropdownContext";
+import Course1 from "./components/Course1";
+import Course2 from "./components/Course2";
+import Course3 from "./components/Course3";
+import Course4 from "./components/Course4";
+import Course5 from "./components/Course5";
+import Course6 from "./components/Course6";
+import Course7 from "./components/Course7";
+import Course8 from "./components/Course8";
 
 function LayoutRoutes() {
   const location = useLocation();
@@ -47,6 +56,14 @@ function LayoutRoutes() {
         <Route path="/course-des" element={<CourseDescription />} />
         <Route path="/enroll" element={<EnrollmentForm />} />
         <Route path="/enrollsuccess" element={<EnrollSuccess />} />
+        <Route path="/course1" element={<Course1 />} />
+        <Route path="/course2" element={<Course2 />} />
+        <Route path="/course3" element={<Course3 />} />
+        <Route path="/course4" element={<Course4 />} />
+        <Route path="/course5" element={<Course5 />} />
+        <Route path="/course6" element={<Course6 />} />
+        <Route path="/course7" element={<Course7 />} />
+        <Route path="/course8" element={<Course8 />} />
 
       </Routes>
 
@@ -58,8 +75,10 @@ function LayoutRoutes() {
 function App() {
   return (
     <Router>
+      <DropdownProvider>
       <ScrollToTop />
       <LayoutRoutes />
+      </DropdownProvider>
     </Router>
   );
 }

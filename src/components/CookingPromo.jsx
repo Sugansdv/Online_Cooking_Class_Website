@@ -37,7 +37,7 @@ const CookingPromo = () => {
         <div>
           <button
             onClick={handleClick}
-            className="bg-[#b14444] text-white px-5 py-2 rounded-full font-semibold hover:bg-[#962f2f] transition-transform transform hover:scale-105 duration-300 ease-in-out"
+            className="bg-[#C34F4F] hover:bg-[#D57A66] text-white px-5 py-2 rounded-full font-semibold transition-transform transform hover:scale-105 duration-300 ease-in-out"
           >
             VIEW COURSES
           </button>

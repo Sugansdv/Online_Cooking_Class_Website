@@ -4,11 +4,13 @@ import insta from '../assets/images/insta.png';
 import book from '../assets/images/author.png';
 import expertise from '../assets/images/expertise.png';
 import { useNavigate } from "react-router-dom";
-function CourseDesBanner() {
+import FeaturesCard from './FeaturesCard';
+import CourseBanner from './CourseBanner';
+function Course3() {
    const navigate = useNavigate();
   return (
-    <div>
-      <div className="relative w-full max-w-7xl mx-auto px-4 py-6 sm:py-8 md:py-12">
+    <div className="w-full flex flex-col items-center bg-white px-4 text-center mt-10">
+      <div className="relative w-full max-w-6xl mx-auto px-4 py-6 sm:py-8 md:py-12">
        <div className="relative w-full rounded-xl overflow-hidden h-[70vh] sm:h-[50vh] md:h-[85vh] lg:h-auto">
   <img
     src={banner1Image}
@@ -22,13 +24,12 @@ function CourseDesBanner() {
         <div className="absolute top-20 sm:top-30 md:top-36 lg:top-60 left-1/2 transform -translate-x-1/2 w-full text-center px-4 sm:px-4 z-10">
           <div className="flex flex-col items-center">
             <h2 className="text-xs sm:text-lg md:text-xl lg:text-4xl w-11/12 md:w-3/4 font-bold text-black leading-tight">
-              From Butter Chicken to Singaporean Noodles: Cook India’s Favourite Dishes at Home
-            </h2>
+              From Biryani to Burgers: Build a Profitable Food Business from Your Own Kitchen
+              </h2>
           </div>
 
           <p className="mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-sm md:text-base lg:text-2xl text-black font-medium max-w-sm sm:max-w-lg md:max-w-xl mx-auto leading-snug">
-            In just 90 days, master the art of cooking 140+ basic to advanced Restaurant and Home styled dishes with step-by-step guidance and recipes!
-          </p>
+            In just 90 days, learn everything from pricing, packaging, and marketing to cooking 120+ best-selling Non-Veg & Veg recipes that are loved by real customers – all from home, step-by-step.</p>
 
           <p className="mt-1 sm:mt-2 md:mt-3 text-[11px] sm:text-base md:text-lg lg:text-4xl font-bold text-black">
             Limited Period Offer – Get 67% OFF
@@ -50,7 +51,7 @@ function CourseDesBanner() {
           </button>
 
           <p className="mt-3 sm:mt-4 md:mt-6 text-[10px] sm:text-base md:text-lg lg:text-2xl font-bold text-black max-w-sm sm:max-w-xl md:max-w-2xl mx-auto leading-snug">
-            Learn the secrets of cooking delicious restaurant and home-style dishes with the Masterchef & ace the art of recreating amazing cuisines at home.
+            Learn how to start and scale your home-based food venture with guidance from industry experts. 
           </p>
         </div>
 
@@ -61,8 +62,10 @@ function CourseDesBanner() {
 </div>
 
       </div>
+      <FeaturesCard />
+      <CourseBanner />
     </div>
   );
 }
 
-export default CourseDesBanner;
+export default Course3;

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext  } from "react";
 import logo1 from "../assets/images/logo_img1.png";
 import logo2 from "../assets/images/logo_img2.png";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { DropdownContext } from "./DropdownContext";
 
 export default function Navbar() {
+  const location = useLocation();
+  const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext);
   const [hoverLogo, setHoverLogo] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showPrograms, setShowPrograms] = useState(false);
@@ -30,9 +33,20 @@ export default function Navbar() {
     setUser(null);
     setDropdownOpen(false);
   };
+  useEffect(() => {
+  if (isDropdownOpen) {
+    setShowPrograms(true);
+
+    const timer = setTimeout(() => {
+      setIsDropdownOpen(false);  
+    }, 200); 
+
+    return () => clearTimeout(timer);
+  }
+}, [isDropdownOpen, setIsDropdownOpen]);
 
   return (
-    <nav className="bg-[#FFF5E1] px-4 sm:px-8 md:px-14 py-4 flex items-center justify-between flex-wrap">
+    <nav className="bg-[#FFF5E1] px-4 sm:px-8 md:px-16 py-4 flex items-center justify-between flex-wrap">
       {/* Logo */}
       <div
         className="flex items-center space-x-4"
@@ -47,10 +61,10 @@ export default function Navbar() {
       </div>
 
       <ul className="hidden lg:flex items-center space-x-16 font-semibold text-[#5B4E44] text-base lg:text-2xl relative">
-        <li className="hover:opacity-70">
+        <li className="hover:text-[#A7C957]">
           <Link to="/">HOME</Link>
         </li>
-        <li className="hover:opacity-70">
+        <li className="hover:text-[#A7C957]">
           <Link to="/about">ABOUT</Link>
         </li>
 
@@ -60,7 +74,7 @@ export default function Navbar() {
           onMouseEnter={() => setShowPrograms(true)}
           onMouseLeave={() => setShowPrograms(false)}
         >
-          <div className="flex items-center">
+          <div className="flex items-center hover:text-[#A7C957]">
             PROGRAMS <span className="ml-1">▼</span>
           </div>
           {showPrograms && (
@@ -69,7 +83,7 @@ export default function Navbar() {
                 <li className="hover:font-semibold">
                   <Link
                     to="/bakery"
-                    className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
+                    className="block hover:text-[#A7C957] px-2 py-1 rounded-md"
                   >
                     BAKERY BUSINESS ACCELERATOR
                   </Link>
@@ -77,7 +91,7 @@ export default function Navbar() {
                 <li className="hover:font-semibold">
                   <Link
                     to="/cloud-kitchen"
-                    className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
+                    className="block hover:text-[#A7C957] px-2 py-1 rounded-md"
                   >
                     CLOUD KITCHEN ACCELERATOR
                   </Link>
@@ -88,42 +102,42 @@ export default function Navbar() {
         </li>
 
         {/* Courses Dropdown */}
-        <li
-          className="relative cursor-pointer"
-          onMouseEnter={() => setShowCourses(true)}
-          onMouseLeave={() => setShowCourses(false)}
-        >
-          <div className="flex items-center">
-            <Link to="/courses">COURSES</Link> <span className="ml-1">▼</span>
-          </div>
-          {showCourses && (
-            <div className="absolute top-full left-0 mt-1 bg-[#FFF5E1] shadow-lg text-black w-80 z-50 rounded-md border border-gray-200">
-              <ul className="p-4 space-y-2 text-base lg:text-md">
-                {[
-                  "THE GOOD FUT PROGRAM",
-                  "FOOD LOOK GOOD",
-                  "START YOUR BUSINESS FROM HOME - NON VEG & VEG",
-                  "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY",
-                  "IMMUNITY BOOSTER RECIPES",
-                  "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES",
-                  "VEGETARIAN’S DELIGHT",
-                  "GARNISHING & PLATING",
-                ].map((course, i) => (
-                  <li key={i} className="hover:font-semibold">
-                    <Link
-                      to="/course-des"
-                      className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
-                    >
-                      {course}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </li>
+<li
+  className="relative cursor-pointer"
+  onMouseEnter={() => setShowCourses(true)}
+  onMouseLeave={() => setShowCourses(false)}
+>
+  <div className="flex items-center hover:text-[#A7C957]">
+    <Link to="/courses ">COURSES</Link> <span className="ml-1">▼</span>
+  </div>
+  {showCourses && (
+    <div className="absolute top-full left-0 mt-1 bg-[#FFF5E1] shadow-lg text-black w-80 z-50 rounded-md border border-gray-200">
+      <ul className="p-4 space-y-2 text-base lg:text-md ">
+        {[
+          { name: "THE GOOD GUT PROGRAM", link: "/course1" },
+          { name: "FOOD LOOK GOOD", link: "/course2" },
+          { name: "START YOUR BUSINESS FROM HOME - NON VEG & VEG", link: "/course3" },
+          { name: "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY", link: "/course4" },
+          { name: "IMMUNITY BOOSTER RECIPES", link: "/course5" },
+          { name: "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES", link: "/course6" },
+          { name: "VEGETARIAN’S DELIGHT", link: "/course7" },
+          { name: "GARNISHING & PLATING", link: "/course8" },
+        ].map((course, i) => (
+          <li key={i} className="hover:font-semibold hover:text-[#A7C957]">
+            <Link
+              to={course.link}
+              className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
+            >
+              {course.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</li>
 
-        <li className="hover:opacity-70">
+        <li className="hover:text-[#A7C957]">
           <Link to="/contact">CONTACT</Link>
         </li>
       </ul>
@@ -155,14 +169,14 @@ export default function Navbar() {
           <>
             <div className="block lg:hidden">
               <Link to="/login">
-                <button className="bg-[#BF4444] text-white text-sm font-bold px-4 py-1.5 rounded-full hover:bg-[#a93b3b]">
+                <button className="bg-[#C34F4F] hover:bg-[#D57A66] text-white text-sm font-bold px-4 py-1.5 rounded-full">
                   LOGIN
                 </button>
               </Link>
             </div>
             <div className="hidden lg:block">
               <Link to="/login">
-                <button className="bg-[#BF4444] text-base lg:text-2xl text-white font-bold px-8 py-2 rounded-full hover:bg-[#a93b3b]">
+                <button className="bg-[#C34F4F] hover:bg-[#D57A66] text-base lg:text-2xl text-white font-bold px-8 py-2 rounded-full">
                   LOGIN
                 </button>
               </Link>
@@ -217,38 +231,38 @@ export default function Navbar() {
           </div>
 
           {/* Courses Toggle */}
-          <div>
-            <button
-              onClick={() => setShowCourses(!showCourses)}
-              className="w-full flex justify-between"
-            >
-              <span>COURSES</span>
-              <span>▼</span>
-            </button>
-            {showCourses && (
-              <div className="pl-4 mt-1 text-sm space-y-1">
-                {[
-                  "THE GOOD FUT PROGRAM",
-                  "FOOD LOOK GOOD",
-                  "START YOUR BUSINESS FROM HOME - NON VEG & VEG",
-                  "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY",
-                  "IMMUNITY BOOSTER RECIPES",
-                  "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES",
-                  "VEGETARIAN’S DELIGHT",
-                  "GARNISHING & PLATING",
-                ].map((course, i) => (
-                  <Link
-                    key={i}
-                    to="/course-des"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block hover:underline"
-                  >
-                    {course}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+<div>
+  <button
+    onClick={() => setShowCourses(!showCourses)}
+    className="w-full flex justify-between"
+  >
+    <span>COURSES</span>
+    <span>▼</span>
+  </button>
+  {showCourses && (
+    <div className="pl-4 mt-1 text-sm space-y-1">
+      {[
+        { name: "THE GOOD GUT PROGRAM", link: "/course1" },
+        { name: "FOOD LOOK GOOD", link: "/course2" },
+        { name: "START YOUR BUSINESS FROM HOME - NON VEG & VEG", link: "/course3" },
+        { name: "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY", link: "/course4" },
+        { name: "IMMUNITY BOOSTER RECIPES", link: "/course5" },
+        { name: "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES", link: "/course6" },
+        { name: "VEGETARIAN’S DELIGHT", link: "/course7" },
+        { name: "GARNISHING & PLATING", link: "/course8" },
+      ].map((course, i) => (
+        <Link
+          key={i}
+          to={course.link}
+          onClick={() => setMobileMenuOpen(false)}
+          className="block hover:underline"
+        >
+          {course.name}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
 
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
             CONTACT

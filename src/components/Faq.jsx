@@ -50,7 +50,7 @@ const Faq = () => {
           <div key={index} className="bg-white rounded-xl border border-gray-300 overflow-hidden">
             <button
               onClick={() => toggle(index)}
-              className="w-full flex items-center justify-between px-6 py-5 text-left text-lg sm:text-2xl font-semibold text-gray-700 focus:outline-none"
+              className="w-full flex items-center justify-between px-6 py-5 text-left text-lg sm:text-2xl font-semibold text-[#6C594A] focus:outline-none"
             >
               <span>{index + 1}. {faq.question}</span>
               <FaChevronDown

@@ -113,7 +113,7 @@ const ForgetPassword = () => {
           {error && <p className="text-red-600 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-60 bg-[#BF4444] text-white text-lg py-2 rounded-full font-bold"
+            className="w-60 bg-[#C34F4F] hover:bg-[#D57A66] text-white text-lg py-2 rounded-full font-bold"
           >
             SUBMIT
           </button>
