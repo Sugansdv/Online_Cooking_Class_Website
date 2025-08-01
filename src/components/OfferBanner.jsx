@@ -17,7 +17,7 @@ export default function OfferBanner() {
 
   return (
     <div
-      className={`relative w-full max-w-7xl mx-auto my-10 rounded-2xl overflow-hidden shadow-xl transform transition-all duration-700 ease-in-out ${
+      className={`relative w-full max-w-7xl px-2 mx-auto my-10 rounded-2xl overflow-hidden shadow-xl transform transition-all duration-700 ease-in-out ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       } hover:scale-[1.02] hover:shadow-4xl`}
     >

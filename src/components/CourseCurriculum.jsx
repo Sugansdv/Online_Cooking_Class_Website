@@ -14,8 +14,8 @@ function CourseCurriculum() {
   className="w-full h-[50vh] sm:h-[75vh] md:h-[105vh] lg:h-auto object-cover rounded-xl"
 />
 
-                       <div className="absolute -top-[5px] md:-top-[40px] lg:-top-[70px] right-[28px] md:right-[35px] lg:right-[170px] h-full flex items-center justify-end px-1">
-  <ul className="list-disc list-inside text-left text-black text-sm md:text-xl lg:text-2xl font-semibold sm:space-y-4 rounded-xl sm:p-8 w-[90%] sm:w-[400px] max-h-[90%]">
+                       <div className="absolute -top-[5px] md:-top-[40px] lg:-top-[70px] right-[28px] md:right-[35px] lg:right-[250px] h-full flex items-center justify-end px-1">
+  <ul className="list-disc list-inside text-left text-black text-xs md:text-md lg:text-2xl font-semibold sm:space-y-4 rounded-xl sm:p-8 w-[90%] sm:w-[400px] max-h-[90%]">
     <li className="whitespace-nowrap">Introduction: Restaurant style dishes</li>
     <li className="whitespace-nowrap">Master class with master chef</li>
     <li className="whitespace-nowrap">Restaurant style dishes: Accompaniments</li>
