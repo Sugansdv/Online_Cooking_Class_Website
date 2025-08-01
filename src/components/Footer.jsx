@@ -50,11 +50,9 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-  to="/courses"
->
-  COURSES
-</Link>
+              <Link to="/courses" className="hover:text-[#C3413B] transition">
+                COURSES
+              </Link>
 
             </li>
           </ul>
