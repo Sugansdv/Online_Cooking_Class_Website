@@ -51,12 +51,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-  to="/?openCourses=true"
-  onClick={() => {
-    setIsCoursesOpen(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }}
-  className="hover:text-[#C3413B] transition"
+  to="/courses"
 >
   COURSES
 </Link>
