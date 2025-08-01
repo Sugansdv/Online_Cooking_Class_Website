@@ -32,7 +32,7 @@ export default function CoursePromo() {
       </div>
 
       {/* Right Content */}
-      <div className="w-full md:basis-[75%] lg:basis-[70%] flex items-stretch border-4 border-lime-500 rounded-[20px]">
+    <div className="w-full md:basis-[75%] lg:basis-[70%] flex items-stretch border-4 border-[#A7C957] rounded-[20px]">
         <div className="relative flex w-full bg-white rounded-[15px] overflow-hidden">
 
           {/* Left Bar */}
