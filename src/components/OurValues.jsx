@@ -1,12 +1,12 @@
 import React from 'react';
-import pizzaImage from '../assets/images/Group 46.png'; 
+import pizzaImage from '../assets/images/Group 46.png';
 
 const OurValues = () => {
   return (
-    <div className="bg-[#fff7f1] py-12 px-20 text-center">
+    <div className="bg-[#fff7f1] py-12 px-4 sm:px-8 md:px-20 text-center">
       <h2 className="text-2xl md:text-4xl font-bold mb-6">OUR VALUES</h2>
-      <div className="relative w-[97%] h-[100vh] lg:h-[70vh] mx-auto overflow-hidden rounded-3xl">
-        
+
+      <div className="relative w-full h-auto sm:h-[80vh] lg:h-[70vh] mx-auto overflow-hidden rounded-3xl">
         {/* Background Image */}
         <img
           src={pizzaImage}
@@ -18,9 +18,9 @@ const OurValues = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40" />
 
         {/* Text Content */}
-        <div className="absolute inset-0 flex items-center justify-center p-4 md:p-10">
-          <div className="text-white text-left max-w-2xl">
-            <ul className="list-disc list-inside space-y-4 text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+        <div className="relative z-10 flex items-center justify-center px-4 py-10 sm:px-10 h-full">
+          <div className="text-white text-left w-full max-w-[90%] sm:max-w-2xl mx-auto">
+            <ul className="list-disc list-inside space-y-4 text-sm sm:text-base md:text-lg lg:text-2xl font-medium leading-relaxed">
               <li>
                 <strong>Simplicity:</strong> We keep our recipes simple and approachable, so even beginners can enjoy cooking.
               </li>
