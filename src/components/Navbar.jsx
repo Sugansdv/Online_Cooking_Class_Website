@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext  } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import logo1 from "../assets/images/logo_img1.png";
 import logo2 from "../assets/images/logo_img2.png";
 import { Menu, X } from "lucide-react";
@@ -7,7 +7,14 @@ import { DropdownContext } from "./DropdownContext";
 
 export default function Navbar() {
   const location = useLocation();
-  const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext);
+
+  const {
+    isProgramDropdownOpen,
+    setIsProgramDropdownOpen,
+    isCourseDropdownOpen,
+    setIsCourseDropdownOpen,
+  } = useContext(DropdownContext);
+
   const [hoverLogo, setHoverLogo] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showPrograms, setShowPrograms] = useState(false);
@@ -15,6 +22,7 @@ export default function Navbar() {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  // Load user from localStorage
   useEffect(() => {
     const loadUser = () => {
       const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -22,9 +30,7 @@ export default function Navbar() {
     };
 
     loadUser();
-
     window.addEventListener("userLogin", loadUser);
-
     return () => window.removeEventListener("userLogin", loadUser);
   }, []);
 
@@ -33,17 +39,24 @@ export default function Navbar() {
     setUser(null);
     setDropdownOpen(false);
   };
+
+  // Trigger program dropdown open from context
   useEffect(() => {
-  if (isDropdownOpen) {
-    setShowPrograms(true);
+    if (isProgramDropdownOpen) {
+      setShowPrograms(true);
+      const timer = setTimeout(() => setIsProgramDropdownOpen(false), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isProgramDropdownOpen]);
 
-    const timer = setTimeout(() => {
-      setIsDropdownOpen(false);  
-    }, 200); 
-
-    return () => clearTimeout(timer);
-  }
-}, [isDropdownOpen, setIsDropdownOpen]);
+  // Trigger course dropdown open from context
+  useEffect(() => {
+    if (isCourseDropdownOpen) {
+      setShowCourses(true);
+      const timer = setTimeout(() => setIsCourseDropdownOpen(false), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isCourseDropdownOpen]);
 
   return (
     <nav className="bg-[#FFF5E1] px-4 sm:px-8 md:px-16 py-4 flex items-center justify-between flex-wrap">
@@ -60,6 +73,7 @@ export default function Navbar() {
         />
       </div>
 
+      {/* Desktop Nav */}
       <ul className="hidden lg:flex items-center space-x-16 font-semibold text-[#5B4E44] text-base lg:text-2xl relative">
         <li className="hover:text-[#A7C957]">
           <Link to="/">HOME</Link>
@@ -81,18 +95,12 @@ export default function Navbar() {
             <div className="absolute top-full left-0 mt-1 bg-[#FFF5E1] shadow-lg text-black w-64 z-50 rounded-md border border-gray-200">
               <ul className="p-4 space-y-2 text-base lg:text-xl">
                 <li className="hover:font-semibold">
-                  <Link
-                    to="/bakery"
-                    className="block hover:text-[#A7C957] px-2 py-1 rounded-md"
-                  >
+                  <Link to="/bakery" className="block hover:text-[#A7C957] px-2 py-1 rounded-md">
                     BAKERY BUSINESS ACCELERATOR
                   </Link>
                 </li>
                 <li className="hover:font-semibold">
-                  <Link
-                    to="/cloud-kitchen"
-                    className="block hover:text-[#A7C957] px-2 py-1 rounded-md"
-                  >
+                  <Link to="/cloud-kitchen" className="block hover:text-[#A7C957] px-2 py-1 rounded-md">
                     CLOUD KITCHEN ACCELERATOR
                   </Link>
                 </li>
@@ -102,40 +110,37 @@ export default function Navbar() {
         </li>
 
         {/* Courses Dropdown */}
-<li
-  className="relative cursor-pointer"
-  onMouseEnter={() => setShowCourses(true)}
-  onMouseLeave={() => setShowCourses(false)}
->
-  <div className="flex items-center hover:text-[#A7C957]">
-    <Link to="/courses ">COURSES</Link> <span className="ml-1">▼</span>
-  </div>
-  {showCourses && (
-    <div className="absolute top-full left-0 mt-1 bg-[#FFF5E1] shadow-lg text-black w-80 z-50 rounded-md border border-gray-200">
-      <ul className="p-4 space-y-2 text-base lg:text-md ">
-        {[
-          { name: "THE GOOD GUT PROGRAM", link: "/course1" },
-          { name: "FOOD LOOK GOOD", link: "/course2" },
-          { name: "START YOUR BUSINESS FROM HOME - NON VEG & VEG", link: "/course3" },
-          { name: "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY", link: "/course4" },
-          { name: "IMMUNITY BOOSTER RECIPES", link: "/course5" },
-          { name: "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES", link: "/course6" },
-          { name: "VEGETARIAN’S DELIGHT", link: "/course7" },
-          { name: "GARNISHING & PLATING", link: "/course8" },
-        ].map((course, i) => (
-          <li key={i} className="hover:font-semibold hover:text-[#A7C957]">
-            <Link
-              to={course.link}
-              className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md"
-            >
-              {course.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-</li>
+        <li
+          className="relative cursor-pointer"
+          onMouseEnter={() => setShowCourses(true)}
+          onMouseLeave={() => setShowCourses(false)}
+        >
+          <div className="flex items-center hover:text-[#A7C957]">
+            <Link to="/courses">COURSES</Link> <span className="ml-1">▼</span>
+          </div>
+          {showCourses && (
+            <div className="absolute top-full left-0 mt-1 bg-[#FFF5E1] shadow-lg text-black w-80 z-50 rounded-md border border-gray-200">
+              <ul className="p-4 space-y-2 text-base lg:text-md">
+                {[
+                  { name: "THE GOOD GUT PROGRAM", link: "/course1" },
+                  { name: "FOOD LOOK GOOD", link: "/course2" },
+                  { name: "START YOUR BUSINESS FROM HOME - NON VEG & VEG", link: "/course3" },
+                  { name: "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY", link: "/course4" },
+                  { name: "IMMUNITY BOOSTER RECIPES", link: "/course5" },
+                  { name: "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES", link: "/course6" },
+                  { name: "VEGETARIAN’S DELIGHT", link: "/course7" },
+                  { name: "GARNISHING & PLATING", link: "/course8" },
+                ].map((course, i) => (
+                  <li key={i} className="hover:font-semibold hover:text-[#A7C957]">
+                    <Link to={course.link} className="block hover:bg-[#f0e4d2] px-2 py-1 rounded-md">
+                      {course.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </li>
 
         <li className="hover:text-[#A7C957]">
           <Link to="/contact">CONTACT</Link>
@@ -198,75 +203,48 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="w-full lg:hidden mt-4 text-[#5B4E44] font-semibold text-base space-y-3 px-4">
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-            HOME
-          </Link>
-          <br />
-          <Link to="/about" onClick={() => setMobileMenuOpen(false)}>
-            ABOUT
-          </Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>HOME</Link>
+          <Link to="/about" onClick={() => setMobileMenuOpen(false)}>ABOUT</Link>
 
           {/* Programs Toggle */}
           <div>
-            <button
-              onClick={() => setShowPrograms(!showPrograms)}
-              className="w-full flex justify-between"
-            >
-              <span>PROGRAMS</span>
-              <span>▼</span>
+            <button onClick={() => setShowPrograms(!showPrograms)} className="w-full flex justify-between">
+              <span>PROGRAMS</span> <span>▼</span>
             </button>
             {showPrograms && (
               <div className="pl-4 mt-1 text-sm space-y-1">
-                <Link to="/bakery" onClick={() => setMobileMenuOpen(false)}>
-                  BAKERY BUSINESS ACCELERATOR
-                </Link> <br />
-                <Link
-                  to="/cloud-kitchen"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  CLOUD KITCHEN ACCELERATOR
-                </Link>
+                <Link to="/bakery" onClick={() => setMobileMenuOpen(false)}>BAKERY BUSINESS ACCELERATOR</Link>
+                <Link to="/cloud-kitchen" onClick={() => setMobileMenuOpen(false)}>CLOUD KITCHEN ACCELERATOR</Link>
               </div>
             )}
           </div>
 
           {/* Courses Toggle */}
-<div>
-  <button
-    onClick={() => setShowCourses(!showCourses)}
-    className="w-full flex justify-between"
-  >
-    <span>COURSES</span>
-    <span>▼</span>
-  </button>
-  {showCourses && (
-    <div className="pl-4 mt-1 text-sm space-y-1">
-      {[
-        { name: "THE GOOD GUT PROGRAM", link: "/course1" },
-        { name: "FOOD LOOK GOOD", link: "/course2" },
-        { name: "START YOUR BUSINESS FROM HOME - NON VEG & VEG", link: "/course3" },
-        { name: "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY", link: "/course4" },
-        { name: "IMMUNITY BOOSTER RECIPES", link: "/course5" },
-        { name: "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES", link: "/course6" },
-        { name: "VEGETARIAN’S DELIGHT", link: "/course7" },
-        { name: "GARNISHING & PLATING", link: "/course8" },
-      ].map((course, i) => (
-        <Link
-          key={i}
-          to={course.link}
-          onClick={() => setMobileMenuOpen(false)}
-          className="block hover:underline"
-        >
-          {course.name}
-        </Link>
-      ))}
-    </div>
-  )}
-</div>
+          <div>
+            <button onClick={() => setShowCourses(!showCourses)} className="w-full flex justify-between">
+              <span>COURSES</span> <span>▼</span>
+            </button>
+            {showCourses && (
+              <div className="pl-4 mt-1 text-sm space-y-1">
+                {[
+                  { name: "THE GOOD GUT PROGRAM", link: "/course1" },
+                  { name: "FOOD LOOK GOOD", link: "/course2" },
+                  { name: "START YOUR BUSINESS FROM HOME - NON VEG & VEG", link: "/course3" },
+                  { name: "START YOUR FOOD BUSINESS FROM HOME - VEG ONLY", link: "/course4" },
+                  { name: "IMMUNITY BOOSTER RECIPES", link: "/course5" },
+                  { name: "INDIA’S FAVOURITES: RESTAURANTS AND HOME STYLE DISHES", link: "/course6" },
+                  { name: "VEGETARIAN’S DELIGHT", link: "/course7" },
+                  { name: "GARNISHING & PLATING", link: "/course8" },
+                ].map((course, i) => (
+                  <Link key={i} to={course.link} onClick={() => setMobileMenuOpen(false)} className="block hover:underline">
+                    {course.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
 
-          <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-            CONTACT
-          </Link>
+          <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
         </div>
       )}
     </nav>
