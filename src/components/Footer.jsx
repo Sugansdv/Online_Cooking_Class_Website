@@ -37,7 +37,9 @@ export default function Footer() {
 
         {/* Home Section */}
         <div className="text-center md:text-left space-y-2 lg:ml-2">
-          <h3 className="font-semibold text-white text-base lg:text-lg">HOME</h3>
+          <h3 className="font-semibold text-white text-base lg:text-lg"> <Link to="/" className="hover:text-[#C3413B] transition">
+                HOME
+              </Link></h3>
           <ul className="space-y-1">
             <li>
               <Link to="/about" className="hover:text-[#C3413B] transition">
@@ -112,7 +114,7 @@ export default function Footer() {
 
           <div>
             <h4 className="font-semibold mt-2 lg:mt-6">FOLLOW US</h4>
-            <div className="flex gap-4 justify-center md:justify-start mt-2 text-xl">
+            <div className="flex gap-6 justify-center md:justify-start mt-2 text-2xl">
               <FaInstagram className="hover:text-black cursor-pointer" />
               <FaGoogle className="hover:text-black cursor-pointer" />
               <FaFacebookF className="hover:text-black cursor-pointer" />
