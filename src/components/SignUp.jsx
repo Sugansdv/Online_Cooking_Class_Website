@@ -10,32 +10,50 @@ const Signup = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, email, password, mobile } = form;
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  const { name, email, password, mobile } = form;
 
-    if (!name || !email || !password || !mobile) {
-      setError("All fields are required");
-      return;
-    }
+  if (!name || !email || !password || !mobile) {
+    setError("All fields are required");
+    return;
+  }
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const existingUser = users.find((u) => u.email === email);
-    if (existingUser) {
-      setError("User already exists!");
-      return;
-    }
+  const nameRegex = /^[A-Za-z\s]+$/;
+  if (!nameRegex.test(name)) {
+    setError("Name should contain only letters and spaces");
+    return;
+  }
 
-    users.push(form);
-    localStorage.setItem("users", JSON.stringify(users));
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    setError("Please enter a valid email address");
+    return;
+  }
+  const mobileRegex = /^\d{10}$/;
+  if (!mobileRegex.test(mobile)) {
+    setError("Mobile number must be exactly 10 digits and contain only numbers");
+    return;
+  }
 
-    // Show modal and redirect
-    setShowModal(true);
-    setTimeout(() => {
-      setShowModal(false);
-      navigate("/login");
-    }, 2000);
-  };
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const existingUser = users.find((u) => u.email === email);
+  if (existingUser) {
+    setError("User already exists!");
+    return;
+  }
+
+  users.push(form);
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("loggedInUser", JSON.stringify(form));
+
+  setShowModal(true);
+  setTimeout(() => {
+    setShowModal(false);
+    navigate("/");
+  }, 2000);
+};
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,7 +62,6 @@ const Signup = () => {
 
   return (
     <div className=" min-h-screen flex items-center justify-center my-20 px-2">
-      {/*  Success Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
@@ -54,7 +71,7 @@ const Signup = () => {
         </div>
       )}
 
-      {/* Signup Form */}
+
       <div className="relative bg-[#fff1d1] p-8 rounded-lg w-full max-w-2xl shadow-md">
        <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-20 py-2 bg-[#c8e76f] rounded-3xl text-sm md:text-base lg:text-4xl flex items-center justify-center font-bold text-black border border-[#a4d157]">
                     SIGNUP
