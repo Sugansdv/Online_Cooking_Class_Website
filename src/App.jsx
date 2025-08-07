@@ -17,7 +17,7 @@ import CloudKitchen from "./pages/CloudKitchen";
 import ForgetPassword from "./components/ForgetPassword";
 import EnrollSuccess from "./components/EnrollSuccess";
 import './App.css';
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "d:/Ecommerce_Wedding_Cards/src/components/ScrollToTop";
 import { DropdownProvider } from "./components/DropdownContext";
 import Course1 from "./components/Course1";
 import Course2 from "./components/Course2";
